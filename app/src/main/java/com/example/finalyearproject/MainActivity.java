@@ -1,15 +1,22 @@
 package com.example.finalyearproject;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import android.content.Context;
+import android.content.pm.ActivityInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.util.Log;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity {
+
+    int PERMISSION_REQUESTS = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +59,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void getRuntimePermissions(){
-        List
+        List<String> allNeededPermissions = new ArrayList<>();
+        for (String permission : getRequiredPermissions()){
+            if(!isPermissionGranted(this, permission)){
+                allNeededPermissions.add(permission);
+            }
+        }
+        if(!allNeededPermissions.isEmpty()){
+            ActivityCompat.requestPermissions(this, allNeededPermissions.toArray(new String[0]), PERMISSION_REQUESTS);
+        }
     }
 }
