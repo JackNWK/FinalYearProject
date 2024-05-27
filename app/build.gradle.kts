@@ -45,6 +45,10 @@ dependencies {
     implementation("androidx.camera:camera-extensions:1.3.3")
 
     // If you want to use the base sdk
+    implementation ("com.google.mlkit:pose-detection:18.0.0-beta4")
+    // If you want to use the accurate sdk
+    implementation ("com.google.mlkit:pose-detection-accurate:18.0.0-beta4")
+    // If you want to use the base sdk
     //implementation 'com.google.mlkit:pose-detection:18.0.0-beta4'
     // If you want to use the accurate sdk
     //implementation 'com.google.mlkit:pose-detection-accurate:18.0.0-beta4'
