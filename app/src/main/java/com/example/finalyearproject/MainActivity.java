@@ -14,7 +14,6 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import android.content.Context;
-import android.content.pm.ActivityInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
@@ -25,9 +24,6 @@ import android.graphics.Paint;
 import android.media.Image;
 import android.os.Bundle;
 import android.util.Log;
-import android.util.Size;
-import android.view.Display;
-import android.view.View;
 
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
@@ -48,6 +44,7 @@ import com.google.mlkit.vision.pose.PoseDetector;
 import com.google.mlkit.vision.pose.PoseLandmark;
 import com.google.mlkit.vision.pose.defaults.PoseDetectorOptions;
 
+
 public class MainActivity extends AppCompatActivity {
 
     private ListenableFuture<ProcessCameraProvider> cameraProviderFuture;
@@ -55,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
     int PERMISSION_REQUESTS = 1;
 
     PreviewView previewView;
+
 
     // Base pose detector with streaming frames, when depending on the pose-detection sdk
     PoseDetectorOptions options =
@@ -68,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
 
     Paint mPaint = new Paint();
 
-    DIsplay display;
+    Display display;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -121,9 +119,6 @@ public class MainActivity extends AppCompatActivity {
         imageAnalysis.setAnalyzer(ActivityCompat.getMainExecutor(this), new ImageAnalysis.Analyzer() {
             @OptIn(markerClass = ExperimentalGetImage.class) @Override
             public void analyze(@NonNull ImageProxy imageProxy) {
-                int rotationDegrees = imageProxy.getImageInfo().getRotationDegrees();
-                // insert your code here.
-                // after done, release the ImageProxy object
 
                 ByteBuffer byteBuffer = imageProxy.getImage().getPlanes()[0].getBuffer();
                 byteBuffer.rewind();
@@ -151,12 +146,16 @@ public class MainActivity extends AppCompatActivity {
                                                     canvas = new Canvas(rotatedBitmap);
 
                                                     for(PoseLandmark poseLandmark : pose.getAllPoseLandmarks()){
-                                                        Log.d("PoseData", "pose x: " + String.valueOf(poseLandmark.getPosition().x));
-                                                        Log.d("PoseData", "pose y: " + String.valueOf(poseLandmark.getPosition().y));
-                                                        canvas.drawCircle(poseLandmark.getPosition().x,poseLandmark.getPosition().y,5,mPaint);
+                                                        //Log.d("PoseData", "pose x: " + String.valueOf(poseLandmark.getPosition().x));
+                                                        //Log.d("PoseData", "pose y: " + String.valueOf(poseLandmark.getPosition().y));
+                                                        PoseLandmark nose = pose.getPoseLandmark(PoseLandmark.NOSE);
+                                                        Log.d("NoseData", nose.toString());
+                                                        //canvas.drawCircle(poseLandmark.getPosition().x,poseLandmark.getPosition().y,5,mPaint);
+
                                                     }
 
-                                                    display.getBitmap(rotatedBitmap);
+                                                    //This opens up the bitmap where it shows the drawings and everything
+                                                    //display.getBitmap(rotatedBitmap);
                                                 }
                                             })
                                     .addOnFailureListener(

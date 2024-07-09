@@ -44,6 +44,8 @@ dependencies {
     implementation("androidx.camera:camera-view:1.3.3")
     implementation("androidx.camera:camera-extensions:1.3.3")
 
+    //implementation("com.google.ar.sceneform.ux:sceneform-ux:1.16.0")
+
     // If you want to use the base sdk
     implementation ("com.google.mlkit:pose-detection:18.0.0-beta4")
     // If you want to use the accurate sdk
@@ -52,4 +54,10 @@ dependencies {
     //implementation 'com.google.mlkit:pose-detection:18.0.0-beta4'
     // If you want to use the accurate sdk
     //implementation 'com.google.mlkit:pose-detection-accurate:18.0.0-beta4'
+
+    // Filament dependencies
+    //implementation("com.google.android.filament:filament-android:1.9.9")
+    //implementation("com.google.android.filament:gltfio-android:1.9.9")
+    //implementation("com.google.android.filament:filament-utils-android:1.9.9")
+
 }

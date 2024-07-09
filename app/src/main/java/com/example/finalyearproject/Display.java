@@ -9,13 +9,13 @@ import android.view.View;
 
 import androidx.annotation.Nullable;
 
-public class DIsplay extends View {
+public class Display extends View {
 
     Rect srcRect = new Rect(0,0,480,640);
     Rect disRect;
     Bitmap b;
 
-    public DIsplay(Context context, @Nullable AttributeSet attrs) {
+    public Display(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
     }
 

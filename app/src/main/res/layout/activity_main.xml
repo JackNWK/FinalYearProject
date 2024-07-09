@@ -11,9 +11,16 @@
         android:layout_height="match_parent"
         android:id="@+id/previewView"/>
 
-    <com.example.finalyearproject.DIsplay
+    <com.example.finalyearproject.Display
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/displayOverlay"/>
+        android:id="@+id/displayOverlay"
+        android:background="@android:color/transparent"/>
+
+    <SurfaceView
+        android:id="@+id/surfaceOverlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/transparent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
